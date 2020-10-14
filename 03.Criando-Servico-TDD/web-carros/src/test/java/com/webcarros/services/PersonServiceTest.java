@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -179,7 +180,8 @@ public class PersonServiceTest {
 	@Test
 	void testRemoveDotsAndTracesThanRemoveUser() {
 		//Arrange
-		final String cpf = "123.456.789-01";
+		final String cpf = "123.456.789-01";		
+		doNothing().when(personRepository).deleteById(any());
 		
 		//Act
 		//Assert
@@ -187,6 +189,7 @@ public class PersonServiceTest {
 	}
 	
 }
+
 
 
 
